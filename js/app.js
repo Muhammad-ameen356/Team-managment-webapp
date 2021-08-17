@@ -12,17 +12,21 @@ signup = () => {
     // Push Data Usin Array 
     // var person = [signupfullname, signupemailid, signuppassword]
 
-    if ((signupfullname.length && signupemailid.length && signuppassword.length) > 0 && signupemailid.indexOf("@") > -1) {
+    if ((signupfullname.length && signupemailid.length && signuppassword.length) > 0 && ((signupemailid.indexOf("@") + 1) !== signupemailid.length) && signupemailid.indexOf("@") > -1) {
         var drophistory = JSON.parse(localStorage.getItem("persons")) || [];
         drophistory.push(person);
         localStorage.setItem("persons", JSON.stringify(drophistory));
     };
 
+    //// testing
+    // console.log(signupemailid.indexOf("@") + 1);
+    // console.log(signupemailid.length);
+
 }
 
-login = () =>{
-    let 
+login = () => {
+    let
 }
 
-var aaa = JSON.parse(localStorage.getItem("ameen"))
-console.log(aaa.name)
+var aaa = JSON.parse(localStorage.getItem("persons"))
+console.log(aaa[1].email)
