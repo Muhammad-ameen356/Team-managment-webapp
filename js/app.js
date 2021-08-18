@@ -7,26 +7,33 @@ signup = () => {
     var person = {
         name: signupfullname,
         email: signupemailid,
-        password: signuppassword
+        password: signuppassword,
     };
     // Push Data Usin Array 
     // var person = [signupfullname, signupemailid, signuppassword]
 
-    if ((signupfullname.length && signupemailid.length && signuppassword.length) > 0 && ((signupemailid.indexOf("@") + 1) !== signupemailid.length) && signupemailid.indexOf("@") > -1) {
-        var drophistory = JSON.parse(localStorage.getItem("persons")) || [];
-        drophistory.push(person);
-        localStorage.setItem("persons", JSON.stringify(drophistory));
-    };
-
+    // if ((signupfullname.length && signupemailid.length && signuppassword.length) > 0 && ((signupemailid.indexOf("@") + 1) !== signupemailid.length) && signupemailid.indexOf("@") > -1) {
+        
+        var signupdata = JSON.parse(localStorage.getItem("persons")) || [];
+        signupdata.push(person);
+        localStorage.setItem("persons", JSON.stringify(signupdata));
+        // return window.location = "./login.html";
+        
+    // }
     //// testing
     // console.log(signupemailid.indexOf("@") + 1);
     // console.log(signupemailid.length);
-
 }
+
 
 login = () => {
-    let
+    let i = 0;var aaa = JSON.parse(localStorage.getItem("persons"))
+    // console.log(aaa[0].email)
+
+    for (i; i<=aaa.length - 1; i++){
+        console.log(aaa[i].name)
+    }
 }
 
-var aaa = JSON.parse(localStorage.getItem("persons"))
-console.log(aaa[1].email)
+// var aaa = JSON.parse(localStorage.getItem("persons"))
+// console.log(aaa[0].email)
