@@ -14,11 +14,12 @@ addteambutton.addEventListener('click', function () {
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
-
+    let commaseprate = memberemailinput.split(',')
+    console.log(commaseprate);
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
-        email: memberemailinput,
+        email: commaseprate,
     };
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
