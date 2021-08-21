@@ -1,4 +1,11 @@
 
+let teamnameinput = document.getElementById('teamnameinput').value;
+let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
+let memberemailinput = document.getElementById('memberemailinput').value;
+
+let editteambutton = document.getElementById('editteambutton');
+let addteambutton = document.getElementById('addteambutton');
+
 // Show Password
 function showsignuppassword() {
     var signuppassword = document.getElementById("signuppassword");
@@ -74,18 +81,13 @@ login = () => {
 
 // FOr Adding Data on local storage
 
-let addteambutton = document.getElementById('addteambutton');
 createteam();
 addteambutton.addEventListener('click', function () {
 
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
-    let addmember = document.getElementById('addmember');
-    addmember.addEventListener(function(){
-        console.log("ameen");
-    })
-    let arr = [];
+
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
@@ -106,7 +108,11 @@ addteambutton.addEventListener('click', function () {
 })
 
 // adding member 
-
+function addmember() {
+    let memberemailinput = document.getElementById('memberemailinput').value;
+    console.log(memberemailinput);
+    document.getElementById('memberemailinput').value = ""
+}
 
 
 
@@ -126,9 +132,7 @@ function createteam() {
                         <p class="teamname">${Teamname}</p>
                         <div class="d-flex justify-content-between">
                             <p class="teammember"><b>Member: </b>${item.email}</p>
-                            <button class="btn btn-dark shadow-remove">
-                            <i class="bi bi-pencil-fill"></i>
-                            </button>
+                            <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square"></i>
                         </div>
                         <p class="teammember"><b>Category:</b> ${item.category}</p>
                     </div>
@@ -139,4 +143,55 @@ function createteam() {
 
 }
 
+// editteam
+function editteam(index) {
+    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
 
+    document.getElementById('teamnameinput').value = teamdata[index].name;
+    document.getElementById('teamcatogeryinput').value = teamdata[index].category;
+    document.getElementById('memberemailinput').value = teamdata[index].email;
+    // console.log(teamdata[index].email);
+    addteambutton.style.display = "none"
+    editteambutton.style.display = "block"
+
+    let hiddeninput = document.getElementById('hiddeninput');
+    // console.log(index);
+    hiddeninput.value = index;
+}
+
+function saveeditteam() {
+    let teamnameinput = document.getElementById('teamnameinput').value;
+    let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
+    let memberemailinput = document.getElementById('memberemailinput').value;
+
+    let person = {
+        name: teamnameinput,
+        category: teamcatogeryinput,
+        email: memberemailinput,
+    };
+
+    let hiddeninput = document.getElementById('hiddeninput').value;
+    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+    teamdata[hiddeninput] = person;
+
+    localStorage.setItem("addteam", JSON.stringify(teamdata));
+    createteam();
+}
+
+
+
+
+
+
+let cancelbutton = document.getElementById('cancelbutton');
+cancelbutton.addEventListener("click", function () {
+    document.getElementById('teamnameinput').value = "";
+    document.getElementById('teamcatogeryinput').value = "";
+    document.getElementById('memberemailinput').value = "";
+})
+
+let showinputmodalbox = document.getElementById('showinputmodalbox');
+showinputmodalbox.addEventListener('click', function () {
+    editteambutton.style.display = "none"
+    addteambutton.style.display = "block"
+})

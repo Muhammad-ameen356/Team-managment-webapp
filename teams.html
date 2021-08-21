@@ -34,9 +34,9 @@
                     onclick="createteam()">
                     Add
                 </button> -->
-                <button type="button" class="btn btn-dark text-white shadow-remove borderradius-remove"
+                <button type="button" id="showinputmodalbox" class="btn btn-dark text-white shadow-remove borderradius-remove"
                     data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                  
+
                     <i class="bi bi-plus-lg"></i>
                 </button>
             </div>
@@ -55,7 +55,7 @@
             <div class="modal-content borderradius-remove">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body">
                     <form id="addingmemberform" class="container">
@@ -64,6 +64,7 @@
                             <input type="email" class="form-control shadow-remove borderradius-remove"
                                 placeholder="Team Name" id="teamnameinput" aria-describedby="emailHelp">
                         </div>
+                        <input type="hidden" id="hiddeninput">
                         <br>
                         <div class="form-outline">
                             <label for="teamcatogeryinput" class="form-label">Category</label>
@@ -83,16 +84,26 @@
                             <label for="memberemailinput" class="form-label">Member (type email)</label>
                             <input type="email" class="form-control shadow-remove borderradius-remove"
                                 placeholder="Member (type email)" id="memberemailinput" aria-describedby="emailHelp">
-                            <button type="button" id="addmember" class="btn btn-danger rounded-0 mt-3">Add Member</button>
+                            <button type="button" onclick="addmember()" class="btn btn-danger rounded-0 mt-3">Add
+                                Member</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" id="addteambutton" onclick="createteam()"
-                        class="btn btn-info text-white borderradius-remove shadow-remove"
-                        data-bs-dismiss="modal">Create</button>
-                    <button type="button" class="btn btn-warning text-white borderradius-remove shadow-remove"
-                        data-bs-dismiss="modal">Cancel</button>
+                        class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
+                        Create
+                    </button>
+
+                    <button type="button" id="editteambutton" onclick="saveeditteam()" style="display: none;"
+                        class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
+                        Edit
+                    </button>
+
+                    <button type="button" id="cancelbutton" class="btn btn-warning text-white borderradius-remove shadow-remove"
+                        data-bs-dismiss="modal">
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>
