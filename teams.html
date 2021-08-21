@@ -16,16 +16,85 @@
 <body>
 
     <div class="container">
-        <fieldset class="scheduler-border">
-            <legend class="scheduler-border">Technical Ameen</legend>
-            <div class="second-container container">
+        <fieldset class="main-border">
+            <legend class="main-border">Teams</legend>
+            <section class="text-center">
                 <h4>Teams you own</h4>
-                <fieldset class="scheduler-border1">
-                    <legend class="scheduler-border1">Technical Ameen</legend>
-                </fieldset>
+            </section>
+            <div class="second-container container" id="createElement">
+                <!-- <fieldset class="scheduler-border1 fw-normal text-start">
+                    <legend class="scheduler-border1" id="teamname">asdasd</legend>
+                    
+                </fieldset> -->
+            </div>
+            <div class="d-flex justify-content-end">
+                <!-- <button type="button" id="addteambutton" class="btn btn-dark text-white shadow-remove"
+                    onclick="createteam()">
+                    Add
+                </button> -->
+                <button type="button" class="btn btn-dark text-white shadow-remove borderradius-remove" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Add
+                </button>
             </div>
         </fieldset>
     </div>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-dark text-white shadow-remove" onclick="createteam()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content borderradius-remove">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addingmemberform" class="container">
+                        <div class="form-outline">
+                            <label for="teamnameinput" class="form-label">Team Name</label>
+                            <input type="email" class="form-control shadow-remove borderradius-remove" placeholder="Team Name"
+                                id="teamnameinput" aria-describedby="emailHelp">
+                        </div>
+                        <br>
+                        <div class="form-outline">
+                            <label for="teamcatogeryinput" class="form-label">Category</label>
+                            <select id="teamcatogeryinput" class="form-select shadow-remove borderradius-remove"
+                                aria-label="Default select example">
+                                <option value="Please Select One" selected>Category</option>
+                                <option value="One">One</option>
+                                <option value="Two">Two</option>
+                                <option value="Three">Three</option>
+                            </select>
+
+                            <!-- <input type="email" class="form-control shadow-remove" placeholder="Category"
+                             aria-describedby="emailHelp"> -->
+                        </div>
+                        <br>
+                        <div class="form-outline">
+                            <label for="memberemailinput" class="form-label">Member (type email)</label>
+                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                placeholder="Member (type email)" id="memberemailinput" aria-describedby="emailHelp">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="addteambutton" onclick="createteam()"
+                        class="btn btn-info text-white borderradius-remove shadow-remove"
+                        data-bs-dismiss="modal">Create</button>
+                    <button type="button" class="btn btn-warning text-white borderradius-remove shadow-remove"
+                        data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <script src="./js/app.js"></script>
