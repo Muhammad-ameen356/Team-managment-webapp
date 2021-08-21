@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <title>Team Managment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -20,6 +21,7 @@
             <legend class="main-border">Teams</legend>
             <section class="text-center">
                 <h4>Teams you own</h4>
+                <h1 id="ifempty"></h1>
             </section>
             <div class="second-container container" id="createElement">
                 <!-- <fieldset class="scheduler-border1 fw-normal text-start">
@@ -32,9 +34,10 @@
                     onclick="createteam()">
                     Add
                 </button> -->
-                <button type="button" class="btn btn-dark text-white shadow-remove borderradius-remove" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">
-                    Add
+                <button type="button" class="btn btn-dark text-white shadow-remove borderradius-remove"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  
+                    <i class="bi bi-plus-lg"></i>
                 </button>
             </div>
         </fieldset>
@@ -58,18 +61,18 @@
                     <form id="addingmemberform" class="container">
                         <div class="form-outline">
                             <label for="teamnameinput" class="form-label">Team Name</label>
-                            <input type="email" class="form-control shadow-remove borderradius-remove" placeholder="Team Name"
-                                id="teamnameinput" aria-describedby="emailHelp">
+                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                placeholder="Team Name" id="teamnameinput" aria-describedby="emailHelp">
                         </div>
                         <br>
                         <div class="form-outline">
                             <label for="teamcatogeryinput" class="form-label">Category</label>
                             <select id="teamcatogeryinput" class="form-select shadow-remove borderradius-remove"
                                 aria-label="Default select example">
-                                <option value="Please Select One" selected>Category</option>
-                                <option value="One">One</option>
-                                <option value="Two">Two</option>
-                                <option value="Three">Three</option>
+                                <option value="Not selected" selected>Category</option>
+                                <option value="Maintainence">Maintainence</option>
+                                <option value="Development">Development</option>
+                                <option value="Project Manager">Project Manager</option>
                             </select>
 
                             <!-- <input type="email" class="form-control shadow-remove" placeholder="Category"
@@ -80,6 +83,7 @@
                             <label for="memberemailinput" class="form-label">Member (type email)</label>
                             <input type="email" class="form-control shadow-remove borderradius-remove"
                                 placeholder="Member (type email)" id="memberemailinput" aria-describedby="emailHelp">
+                            <button type="button" id="addmember" class="btn btn-danger rounded-0 mt-3">Add Member</button>
                         </div>
                     </form>
                 </div>

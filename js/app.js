@@ -1,8 +1,24 @@
-// whenpageload = () =>{
-//     console.log()
-// }
 
-//Todo: For Signup and save Data in localStorage
+// Show Password
+function showsignuppassword() {
+    var signuppassword = document.getElementById("signuppassword");
+    if (signuppassword.type === "password") {
+        signuppassword.type = "text";
+    } else {
+        signuppassword.type = "password";
+    }
+}
+
+function showloginpassword() {
+    var loginpassword = document.getElementById("loginpassword")
+    if (loginpassword.type === "password") {
+        loginpassword.type = "text";
+    } else {
+        loginpassword.type = "password";
+    }
+}
+
+// For Signup and save Data in localStorage
 signup = () => {
     const signupfullname = document.getElementById('signupfullname').value;
     const signupemailid = document.getElementById('signupemailid').value;
@@ -31,8 +47,8 @@ signup = () => {
     // console.log(signupemailid.length);
 }
 
-////Todo: Retrive Data From localStorage and Match email and password.
-////Todo: if email and password matched user go on the team page 
+// Retrive Data From localStorage and Match email and password.
+// if email and password matched user go on the team page 
 login = () => {
 
     let loginnameoremail = document.getElementById('loginnameoremail').value;
@@ -56,44 +72,49 @@ login = () => {
     // console.log(aaa[0].email)  
 }
 
-////Todo: FOr Adding Data on local storage
+// FOr Adding Data on local storage
 
 let addteambutton = document.getElementById('addteambutton');
-// let teamnameget = prompt("Enter Team Name");
 createteam();
 addteambutton.addEventListener('click', function () {
-    // let teamnameget = prompt("Enter Team Name");
-    // let teammemberget = prompt("Enter Team member");
+
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
-
+    let addmember = document.getElementById('addmember');
+    addmember.addEventListener(function(){
+        console.log("ameen");
+    })
+    let arr = [];
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
         email: memberemailinput,
     };
 
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    teamdata.push(person);
-    localStorage.setItem("addteam", JSON.stringify(teamdata));
-    createteam();
-
+    if ((teamnameinput.length && memberemailinput.length) > 0) {
+        let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+        teamdata.push(person);
+        localStorage.setItem("addteam", JSON.stringify(teamdata));
+        createteam();
+        document.getElementById("teamnameinput").value = "";
+        document.getElementById("teamcatogeryinput").value = "";
+        document.getElementById("memberemailinput").value = "";
+    } else {
+        alert("Please Input first")
+    }
 })
 
+// adding member 
 
+
+
+
+
+// Create Team 
 function createteam() {
-    // let teamnameget = prompt("Enter Team Name");
-    // let teammemberget = prompt("Enter Team member");
 
-    // let person = {
-    //     name: teamnameget,
-    //     email: teammemberget,
-    // };
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    // teamdata.push(person);
-    // localStorage.setItem("team", JSON.stringify(teamdata));
-
     let html = '';
     let createElement = document.getElementById('createElement');
 
@@ -105,34 +126,17 @@ function createteam() {
                         <p class="teamname">${Teamname}</p>
                         <div class="d-flex justify-content-between">
                             <p class="teammember"><b>Member: </b>${item.email}</p>
-                            <button class="btn btn-primary shadow-remove">edit</button>
+                            <button class="btn btn-dark shadow-remove">
+                            <i class="bi bi-pencil-fill"></i>
+                            </button>
                         </div>
                         <p class="teammember"><b>Category:</b> ${item.category}</p>
                     </div>
                 </fieldset>`
     });
+
     createElement.innerHTML = html;
 
-
-    // let field = document.createElement('fieldset');
-    // let div = document.createElement("div");
-    // let br = document.createElement("br")
-
-    // const dataforteam = JSON.parse(localStorage.getItem("team"))
-    // console.log(dataforteam[0].name);
-    // var name = (dataforteam[0].name);
-
-    // let fieldteamname = document.createTextNode(teamnameget);
-    // let fieldteammember = document.createTextNode("Member: " + teammemberget);
-
-    // field.setAttribute("class","scheduler-border1 fw-normal text-start");
-    // div.setAttribute("class", "p-2")
-
-    // field.appendChild(div);
-    // div.appendChild(fieldteamname);
-    // div.appendChild(br);
-    // div.appendChild(fieldteammember)
-    // createElement.appendChild(field);
 }
 
 
