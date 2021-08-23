@@ -45,6 +45,8 @@ fieldset.myteam {
 .myteam .myteamcontent{
   padding: 10px 40px;
   font-size: 20px !important;
+  word-wrap: break-word;
+
 }
 
 .myteamcontent .teamname{
@@ -55,7 +57,13 @@ fieldset.myteam {
 .myteamcontent .teammember{
   margin-top: -7px;
   font-size: 14px;
+  word-wrap: break-word;
   /* padding-bottom: 0px; */
+}
+
+.for-break{
+  word-wrap: break-word;
+
 }
 
 .myteamcontent .teamcategory{

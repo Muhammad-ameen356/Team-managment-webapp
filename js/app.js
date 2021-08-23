@@ -7,7 +7,6 @@ let editteambutton = document.getElementById('editteambutton');
 let addteambutton = document.getElementById('addteambutton');
 
 // FOr Adding Data on local storage
-
 createteam();
 addteambutton.addEventListener('click', function () {
 
@@ -91,11 +90,12 @@ function saveeditteam() {
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
-
+    let commaseprate = memberemailinput.split(',')
+    // console.log(commaseprate);
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
-        email: memberemailinput,
+        email: commaseprate,
     };
 
     let hiddeninput = document.getElementById('hiddeninput').value;
@@ -106,8 +106,13 @@ function saveeditteam() {
     createteam();
 }
 
-
-
+// Deleteall
+function deleteall(){
+    // clear localStorage
+    localStorage.removeItem('addteam');
+    let createElement = document.getElementById('createElement');
+    createElement.innerHTML = ""
+}
 
 
 
@@ -120,6 +125,9 @@ cancelbutton.addEventListener("click", function () {
 
 let showinputmodalbox = document.getElementById('showinputmodalbox');
 showinputmodalbox.addEventListener('click', function () {
+    document.getElementById('teamnameinput').value = "";
+    document.getElementById('teamcatogeryinput').value = "";
+    document.getElementById('memberemailinput').value = "";
     editteambutton.style.display = "none"
     addteambutton.style.display = "block"
 })
