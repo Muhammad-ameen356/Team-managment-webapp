@@ -1,4 +1,3 @@
-
 // let teamnameinput = document.getElementById('teamnameinput').value;
 // let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
 // let memberemailinput = document.getElementById('memberemailinput').value;
@@ -30,16 +29,16 @@ addteambutton.addEventListener('click', function () {
         document.getElementById("teamcatogeryinput").value = "";
         document.getElementById("memberemailinput").value = "";
     } else {
-        alert("Please Input first")
+        alert("Please Input first");
     }
 })
 
 // adding member 
-function addmember() {
-    let memberemailinput = document.getElementById('memberemailinput').value;
-    console.log(memberemailinput);
-    document.getElementById('memberemailinput').value = ""
-}
+// function addmember() {
+//     let memberemailinput = document.getElementById('memberemailinput').value;
+//     console.log(memberemailinput);
+//     document.getElementById('memberemailinput').value = "";
+// }
 
 
 
@@ -67,7 +66,6 @@ function createteam() {
     });
 
     createElement.innerHTML = html;
-
 }
 
 // editteam

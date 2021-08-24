@@ -1,0 +1,22 @@
+.tab-buttons {
+  margin-top: 40px;
+  border-bottom: 0px !important;
+}
+
+.subtab-btn:focus {
+  border-radius: 0px !important;
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-left: 0px !important;
+  border-bottom: 3px solid orange !important;
+  color: black !important;
+}
+
+.subtab-btn {
+    border-radius: 0px !important;
+    border-top: 0px !important;
+    border-right: 0px !important;
+    border-left: 0px !important;
+    border-bottom: 0px !important;
+    color: black !important;
+}
