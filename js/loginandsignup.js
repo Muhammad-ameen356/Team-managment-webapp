@@ -96,19 +96,6 @@ function signup() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Retrive Data From localStorage and Match email and password.
 // if email and password matched user go on the team page 
 function login() {
@@ -121,14 +108,14 @@ function login() {
     let found = false;
     // Loop for searching data in Array
     for (let i = 0; i <= dataforlogin.length - 1; i++) {
-        if ((dataforlogin[i].email == loginnameoremail || dataforlogin[i].name == loginnameoremail) && dataforlogin[i].password == loginpassword) {
+        if ((dataforlogin[i].email == loginnameoremail || dataforlogin[i].username == loginnameoremail) && dataforlogin[i].password == loginpassword) {
             found = true;
             console.log("Login email and password matched");
             window.location.href = "./teams.html"
         }
     }
     if (found == false) {
-        swal("Email or password Not Match");
+        swal("Incorrect Email or Password");
     }
     // var aaa = JSON.parse(localStorage.getItem("persons"))
     // console.log(aaa[0].email)  
