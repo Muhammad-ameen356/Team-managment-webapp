@@ -13,7 +13,7 @@ addteambutton.addEventListener('click', function () {
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
     let commaseprate = memberemailinput.split(',')
-    console.log(commaseprate);
+    // console.log(commaseprate);
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
@@ -21,15 +21,20 @@ addteambutton.addEventListener('click', function () {
     };
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
-        let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-        teamdata.push(person);
-        localStorage.setItem("addteam", JSON.stringify(teamdata));
-        createteam();
-        document.getElementById("teamnameinput").value = "";
-        document.getElementById("teamcatogeryinput").value = "";
-        document.getElementById("memberemailinput").value = "";
+        if (memberemailinput.indexOf(" ") == -1) {
+            let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+            teamdata.push(person);
+            localStorage.setItem("addteam", JSON.stringify(teamdata));
+            swal("Team Created", "Add more member If you want", "success");
+            createteam();
+            document.getElementById("teamnameinput").value = "";
+            document.getElementById("teamcatogeryinput").value = "";
+            document.getElementById("memberemailinput").value = "";
+        } else {
+            swal("Member Filed Cannot contain Any Empty Space")
+        }
     } else {
-        alert("Please Input first");
+        swal("Please Input first");
     }
 })
 
@@ -44,29 +49,64 @@ addteambutton.addEventListener('click', function () {
 
 
 // Create Team 
+// Todo: print email where I added
 function createteam() {
-
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
     let html = '';
+    let memberhtml = '';
     let createElement = document.getElementById('createElement');
-
     teamdata.forEach((item, index) => {
-        var Teamname = (item.name);
-
+        let email = item.email
+        let teamname = item.name
+        let capitializaTeamname = (teamname.charAt(0).toUpperCase() + teamname.slice(1));
+        email.forEach((emailitem, ii) => {
+            memberhtml += `<li>
+                              ${emailitem}  
+                        </li>`
+        })
         html += `<fieldset class="myteam fw-normal text-start">
                     <div class="myteamcontent">
-                        <p class="teamname">${Teamname}</p>
+                        <p class="teamname">${capitializaTeamname}</p>
+                        <hr>
                         <div class="d-flex justify-content-between">
-                            <p class="teammember"><b>Member: </b>${item.email}</p>
+                       <i> <p class="member">Members</p></i>
+                            <ul class="teammember" id="memberlist">
+                            ${memberhtml}
+                            </ul>
                             <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square"></i>
                         </div>
+                        <hr>
                         <p class="teammember"><b>Category:</b> ${item.category}</p>
                     </div>
                 </fieldset>`
     });
 
     createElement.innerHTML = html;
+    // if (memberhtml.length > 0) {
+    //     document.getElementById('memberlist').innerHTML = memberhtml;
+    // } else {
+    //     console.log("Empty");
+    // }
+    console.log(memberhtml.length);
 }
+
+// function memberlist() {
+//     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+//     let html = '';
+
+//     teamdata.forEach((item, index) => {
+//         var teameamil = (item.email);
+//         console.log(item.email);
+
+//         html += `<ul>
+//                     <li>
+//                     ${item.email}
+//                     </li>
+//                 </ul>`
+//     });
+//     // memberlist.innerHTML = html
+
+// }
 
 // editteam
 function editteam(index) {
@@ -85,6 +125,8 @@ function editteam(index) {
 }
 
 function saveeditteam() {
+    let hiddeninput = document.getElementById('hiddeninput').value;
+
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
@@ -96,16 +138,24 @@ function saveeditteam() {
         email: commaseprate,
     };
 
-    let hiddeninput = document.getElementById('hiddeninput').value;
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    teamdata[hiddeninput] = person;
+    if ((teamnameinput.length && memberemailinput.length) > 0) {
+        if (memberemailinput.indexOf(" ") == -1) {
+            let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+            teamdata[hiddeninput] = person;
+            localStorage.setItem("addteam", JSON.stringify(teamdata));
+        } else {
+            swal("Member Filed Cannot contain Any Empty Space")
+        }
+    } else {
+        swal("Empty Field Not Allowed")
+    }
 
-    localStorage.setItem("addteam", JSON.stringify(teamdata));
+
     createteam();
 }
 
 // Deleteall
-function deleteall(){
+function deleteall() {
     // clear localStorage
     localStorage.removeItem('addteam');
     let createElement = document.getElementById('createElement');
@@ -129,3 +179,6 @@ showinputmodalbox.addEventListener('click', function () {
     editteambutton.style.display = "none"
     addteambutton.style.display = "block"
 })
+
+
+

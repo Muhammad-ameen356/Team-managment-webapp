@@ -101,3 +101,8 @@ fieldset.myteam {
 .form-outline input {
   border-radius: 0px !important;
 }
+
+.member{
+  font-size: 16px;
+  font-weight: bold;
+}

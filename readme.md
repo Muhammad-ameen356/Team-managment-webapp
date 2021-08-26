@@ -12,3 +12,5 @@ Login Features:
 2. If Email and Password Match then login else Sweet alert show.
 
 <!-- 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 -->
+
+TeamPage Features:
