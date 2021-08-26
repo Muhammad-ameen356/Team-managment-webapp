@@ -18,9 +18,9 @@
         <fieldset class="main-border">
             <legend class="main-border">Teams / Owner View</legend>
             <!-- <section class="text-center">
-                <h4>Teams you own</h4>
-                <h1 id="ifempty"></h1>
-            </section> -->
+                    <h4>Teams you own</h4>
+                    <h1 id="ifempty"></h1>
+                </section> -->
             <!-- <div class="second-container container" id="createElement">
                 <fieldset class="scheduler-border1 fw-normal text-start">
                     <legend class="scheduler-border1" id="teamname">asdasd</legend>
@@ -30,24 +30,164 @@
             <div class="container">
                 <ul class="nav nav-tabs tab-buttons" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active report-tab-button subtab-btn" id="home-tab" data-bs-toggle="tab"
+                        <button class="nav-link  report-tab-button subtab-btn" id="home-tab" data-bs-toggle="tab"
                             data-bs-target="#home" type="button" role="tab" aria-controls="home"
                             aria-selected="true">Reports</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link setting-tab-button subtab-btn" id="profile-tab" data-bs-toggle="tab"
-                            data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                            aria-selected="false">Setting</button>
+                        <button class="nav-link active setting-tab-button subtab-btn" id="profile-tab"
+                            data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"
+                            aria-controls="profile" aria-selected="false">Setting</button>
                     </li>
                 </ul>
+                <hr>
 
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        My name Is ameen Zahid</div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Ok lets</div>
+                    <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2 col-5">
+                                    <select class="form-select outline-remove borderradius-remove"
+                                        aria-label="Default select example">
+                                        <option selected>All Members</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-8 col-2">
+
+                                </div>
+                                <div class="col-md-2 col-5">
+                                    <input type="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Setting Tab  -->
+                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="container">
+
+                            <p>Questions:</p>
+                            <div class="container-fluid" style="margin-left:20px ;">
+                                <div class="col-md-4">
+                                    <div class="form-outline">
+                                        <label for="teamnameinput" class="form-label">What Did You Do Today?</label>
+                                        <input type="text" class="form-control shadow-remove borderradius-remove"
+                                            placeholder="" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-md-4">
+                                    <div class="form-outline">
+                                        <label for="teamnameinput" class="form-label">What will You Do Tommorow?</label>
+                                        <input type="text" class="form-control shadow-remove borderradius-remove"
+                                            placeholder="" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-md-4">
+                                    <div class="form-outline">
+                                        <label for="teamnameinput" class="form-label">Are there any blocker in your
+                                            way?</label>
+                                        <input type="text" class="form-control shadow-remove borderradius-remove"
+                                            placeholder="" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <p>Reminder Time:</p>
+                            <div class="container-fluid" style="margin-left:20px ;">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="time">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input outline-remove" type="checkbox" value=""
+                                                id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Exclude Weekends
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <p>Members:</p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <li>test@gmail.com</li>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-10">
+                                        <div class="form-outline">
+                                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                                placeholder="Add Members" aria-describedby="emailHelp">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-2">
+                                        <button type="button"
+                                            class="btn btn-primary text-white borderradius-remove shadow-remove addshadow">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-2 col-2">
+                                        <button type="button"
+                                            class="btn btn-primary text-white borderradius-remove shadow-remove addshadow">
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6 col-2">
+                                        <button type="button"
+                                            class="btn btn-light borderradius-remove shadow-remove addshadow">
+                                           Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 col-2">
+                                        <button type="button"
+                                            class="btn btn-warning text-white borderradius-remove shadow-remove addshadow">
+                                           Delete Team
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+<br>
         </fieldset>
     </div>
 
