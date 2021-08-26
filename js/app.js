@@ -3,11 +3,11 @@
 // let memberemailinput = document.getElementById('memberemailinput').value;
 
 let editteambutton = document.getElementById('editteambutton');
-let addteambutton = document.getElementById('addteambutton');
+let createteamid = document.getElementById('createteamid');
 
 // FOr Adding Data on local storage
 createteam();
-addteambutton.addEventListener('click', function () {
+createteamid.addEventListener('click', function () {
 
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
@@ -116,7 +116,7 @@ function editteam(index) {
     document.getElementById('teamcatogeryinput').value = teamdata[index].category;
     document.getElementById('memberemailinput').value = teamdata[index].email;
     // console.log(teamdata[index].email);
-    addteambutton.style.display = "none"
+    createteamid.style.display = "none"
     editteambutton.style.display = "block"
 
     let hiddeninput = document.getElementById('hiddeninput');
@@ -177,7 +177,7 @@ showinputmodalbox.addEventListener('click', function () {
     document.getElementById('teamcatogeryinput').value = "";
     document.getElementById('memberemailinput').value = "";
     editteambutton.style.display = "none"
-    addteambutton.style.display = "block"
+    createteamid.style.display = "block"
 })
 
 
