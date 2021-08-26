@@ -68,8 +68,8 @@ function createteam() {
                     <div class="myteamcontent">
                         <p class="teamname">${capitializaTeamname}</p>
                         <hr>
+                        <i> <p class="member">Members:</p></i>
                         <div class="d-flex justify-content-between">
-                       <i> <p class="member">Members</p></i>
                             <ul class="teammember" id="memberlist">
                             ${memberhtml}
                             </ul>
