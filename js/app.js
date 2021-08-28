@@ -66,8 +66,14 @@ function createteam() {
                             <ul class="teammember" id="memberlist">
                             ${memberhtml}
                             </ul>
+                            <div>
                             <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square"></i>
+                            <br>
+                            <br>
+                            <i class="bi bi-gear" onclick="settingteam(${index})" style="cursor: pointer;"></i>
+                            </div>
                         </div>
+                        
                         <hr>
                         <p class="teammember"><b>Category:</b> ${item.category}</p>
                     </div>
@@ -171,5 +177,22 @@ showinputmodalbox.addEventListener('click', function () {
     createteamid.style.display = "block"
 })
 
+function settingteam(index){
+    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
 
+    let a = document.getElementById('teamnameinput').value = teamdata[index].name;
+    let b = document.getElementById('teamcatogeryinput').value = teamdata[index].category;
+    let c = document.getElementById('memberemailinput').value = teamdata[index].email;
+    
+    sessionStorage.setItem("a", a);
+    sessionStorage.setItem("b", b);
+    sessionStorage.setItem("c", c);
+    
+    let seca = sessionStorage.getItem("a")
+    console.log(seca);
+
+    document.getElementById('memberownerview').innerHTML = seca
+    window.location.href = "./teamowner.html"
+
+}
 
