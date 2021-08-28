@@ -1,7 +1,3 @@
-// let teamnameinput = document.getElementById('teamnameinput').value;
-// let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
-// let memberemailinput = document.getElementById('memberemailinput').value;
-
 let editteambutton = document.getElementById('editteambutton');
 let createteamid = document.getElementById('createteamid');
 
@@ -150,7 +146,6 @@ function saveeditteam() {
         swal("Empty Field Not Allowed")
     }
 
-
     createteam();
 }
 
@@ -159,9 +154,8 @@ function deleteall() {
     // clear localStorage
     localStorage.removeItem('addteam');
     let createElement = document.getElementById('createElement');
-    createElement.innerHTML = ""
+    createElement.innerHTML = "";
 }
-
 
 
 let cancelbutton = document.getElementById('cancelbutton');
