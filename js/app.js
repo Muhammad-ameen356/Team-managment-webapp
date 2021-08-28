@@ -41,9 +41,6 @@ createteamid.addEventListener('click', function () {
 //     document.getElementById('memberemailinput').value = "";
 // }
 
-
-
-
 // Create Team 
 // Todo: print email where I added
 function createteam() {
