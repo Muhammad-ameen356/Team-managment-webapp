@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
-<body>
+<body onload="createteam();">
 
     <div class="container">
         <fieldset class="main-border">
@@ -34,7 +34,7 @@
                     onclick="createteam()">
                     Add
                 </button> -->
-                <button type="button" id="showinputmodalbox"
+                <button type="button" onclick="showinputmodalbox()"
                     class="btn btn-dark text-white shadow-remove borderradius-remove" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">
 
@@ -100,7 +100,7 @@
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" id="createteamid" onclick="createteam()"
+                    <button type="button" id="createteamid" onclick="createteamdatastore(); createteam(); "
                         class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
                         Create
                     </button>

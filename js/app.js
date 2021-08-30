@@ -1,9 +1,5 @@
-let editteambutton = document.getElementById('editteambutton');
-let createteamid = document.getElementById('createteamid');
-
 // FOr Adding Data on local storage
-createteam();
-createteamid.addEventListener('click', function () {
+function createteamdatastore() {
 
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
@@ -32,7 +28,7 @@ createteamid.addEventListener('click', function () {
     } else {
         swal("Please Input first");
     }
-})
+};
 
 // adding member 
 // function addmember() {
@@ -70,7 +66,7 @@ function createteam() {
                             <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square"></i>
                             <br>
                             <br>
-                            <i class="bi bi-gear" onclick="settingteam(${index})" style="cursor: pointer;"></i>
+                            <i onclick="settingteam(${index})" class="bi bi-gear" style="cursor: pointer;"></i>
                             </div>
                         </div>
                         
@@ -89,27 +85,11 @@ function createteam() {
     console.log(memberhtml.length);
 }
 
-// function memberlist() {
-//     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-//     let html = '';
-
-//     teamdata.forEach((item, index) => {
-//         var teameamil = (item.email);
-//         console.log(item.email);
-
-//         html += `<ul>
-//                     <li>
-//                     ${item.email}
-//                     </li>
-//                 </ul>`
-//     });
-//     // memberlist.innerHTML = html
-
-// }
-
 // editteam
 function editteam(index) {
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+    let createteamid = document.getElementById('createteamid');
+    let editteambutton = document.getElementById('editteambutton');
 
     document.getElementById('teamnameinput').value = teamdata[index].name;
     document.getElementById('teamcatogeryinput').value = teamdata[index].category;
@@ -161,38 +141,38 @@ function deleteall() {
 }
 
 
-let cancelbutton = document.getElementById('cancelbutton');
-cancelbutton.addEventListener("click", function () {
-    document.getElementById('teamnameinput').value = "";
-    document.getElementById('teamcatogeryinput').value = "";
-    document.getElementById('memberemailinput').value = "";
-})
+// let cancelbutton = document.getElementById('cancelbutton');
+// cancelbutton.addEventListener("click", function () {
+//     document.getElementById('teamnameinput').value = "";
+//     document.getElementById('teamcatogeryinput').value = "";
+//     document.getElementById('memberemailinput').value = "";
+// })
 
-let showinputmodalbox = document.getElementById('showinputmodalbox');
-showinputmodalbox.addEventListener('click', function () {
+function showinputmodalbox() {    
+    let createteamid = document.getElementById('createteamid');
+    let editteambutton = document.getElementById('editteambutton');
     document.getElementById('teamnameinput').value = "";
     document.getElementById('teamcatogeryinput').value = "";
     document.getElementById('memberemailinput').value = "";
     editteambutton.style.display = "none"
     createteamid.style.display = "block"
-})
+};
 
 function settingteam(index){
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
 
-    let a = document.getElementById('teamnameinput').value = teamdata[index].name;
-    let b = document.getElementById('teamcatogeryinput').value = teamdata[index].category;
-    let c = document.getElementById('memberemailinput').value = teamdata[index].email;
+    let a =  teamdata[index].name;
+    let b =  teamdata[index].category;
+    let c = teamdata[index].email;
     
     sessionStorage.setItem("a", a);
     sessionStorage.setItem("b", b);
     sessionStorage.setItem("c", c);
     
-    let seca = sessionStorage.getItem("a")
-    console.log(seca);
-
-    document.getElementById('memberownerview').innerHTML = seca
+    // let seca = sessionStorage.getItem("a")
+    
     window.location.href = "./teamowner.html"
+    // document.getElementById('memberownerview').innerHTML = seca
 
 }
 
