@@ -15,7 +15,7 @@
 </head>
 
 <body onload="settingteamGetData()">
-   
+
     <div class="container">
         <fieldset class="main-border">
             <legend class="main-border">Teams / Owner View</legend>
@@ -123,27 +123,8 @@
                             <br>
                             <p>Members:</p>
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <li id="memberownerview"> </li>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <li>test@gmail.com</li>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <li>test@gmail.com</li>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <li>test@gmail.com</li>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <li>test@gmail.com</li>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <li>test@gmail.com</li>
-                                    </div>
+                                <div class="row" id="memberownerview">
+
                                 </div>
                             </div>
                             <br>
@@ -174,17 +155,16 @@
                                         </button>
                                     </div>
                                     <div class="col-md-6 col-2">
-                                        <button type="button"
+                                        <button type="button" onclick="history.back();"
                                             class="btn btn-light borderradius-remove shadow-remove addshadow">
                                             Cancel
                                         </button>
                                     </div>
                                     <div class="col-md-4 col-2">
-                                        <button type="button"
+                                        <button type="button" onclick="deleteteam()"
                                             class="btn btn-warning text-white borderradius-remove shadow-remove addshadow">
                                             Delete Team
                                         </button>
-                                        <p>asdas</p>
                                     </div>
                                 </div>
                             </div>

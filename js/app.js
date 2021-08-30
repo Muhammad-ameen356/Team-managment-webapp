@@ -45,14 +45,20 @@ function createteam() {
     let memberhtml = '';
     let createElement = document.getElementById('createElement');
     teamdata.forEach((item, index) => {
-        let email = item.email
+        if (item.email.length == 1) {
+            var email = item.email[0];
+        } else {
+            var email = item.email[0] + ", " + item.email[1] + " & " + `<b> ${(item.email.length - 2)} </b>` + " Other"
+
+        }
         let teamname = item.name
         let capitializaTeamname = (teamname.charAt(0).toUpperCase() + teamname.slice(1));
-        email.forEach((emailitem, ii) => {
-            memberhtml += `<li>
-                              ${emailitem}  
-                        </li>`
-        })
+        // email.forEach((emailitem, ii) => {
+        //     memberhtml += `<li>
+        //                       ${emailitem}  
+        //                 </li>`
+        // })
+
         html += `<fieldset class="myteam fw-normal text-start">
                     <div class="myteamcontent">
                         <p class="teamname">${capitializaTeamname}</p>
@@ -60,13 +66,11 @@ function createteam() {
                         <i> <p class="member">Members:</p></i>
                         <div class="d-flex justify-content-between">
                             <ul class="teammember" id="memberlist">
-                            ${memberhtml}
+                            ${email} 
                             </ul>
-                            <div>
-                            <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square"></i>
-                            <br>
-                            <br>
-                            <i onclick="settingteam(${index})" class="bi bi-gear" style="cursor: pointer;"></i>
+                            <div class="text-center">
+                            <i onclick="editteam(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="cursor: pointer;" class="bi bi-pencil-square pe-2"></i>
+                            <i onclick="settingteam(${index})" class="bi bi-gear-fill" style="cursor: pointer;"></i>
                             </div>
                         </div>
                         
@@ -101,6 +105,7 @@ function editteam(index) {
     let hiddeninput = document.getElementById('hiddeninput');
     // console.log(index);
     hiddeninput.value = index;
+    console.log(index);
 }
 
 function saveeditteam() {
@@ -148,7 +153,7 @@ function deleteall() {
 //     document.getElementById('memberemailinput').value = "";
 // })
 
-function showinputmodalbox() {    
+function showinputmodalbox() {
     let createteamid = document.getElementById('createteamid');
     let editteambutton = document.getElementById('editteambutton');
     document.getElementById('teamnameinput').value = "";
@@ -158,21 +163,19 @@ function showinputmodalbox() {
     createteamid.style.display = "block"
 };
 
-function settingteam(index){
+function settingteam(index) {
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
 
-    let a =  teamdata[index].name;
-    let b =  teamdata[index].category;
-    let c = teamdata[index].email;
-    
-    sessionStorage.setItem("a", a);
-    sessionStorage.setItem("b", b);
-    sessionStorage.setItem("c", c);
-    
-    // let seca = sessionStorage.getItem("a")
-    
+    let name = teamdata[index].name;
+    let category = teamdata[index].category;
+    let email = teamdata[index].email;
+
+    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("category", category);
+    sessionStorage.setItem("email", JSON.stringify(email));
+    sessionStorage.setItem("index", index);
+
     window.location.href = "./teamowner.html"
-    // document.getElementById('memberownerview').innerHTML = seca
 
 }
 
