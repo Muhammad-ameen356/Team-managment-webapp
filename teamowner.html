@@ -124,23 +124,22 @@
                             <p>Members:</p>
                             <div class="container">
                                 <div class="row" id="memberownerview">
-
+                                    
                                 </div>
                             </div>
                             <br>
                             <div class="container">
-                                <div class="row">
+                                <div class="row mt-4">
                                     <div class="col-md-8 col-10">
                                         <div class="form-outline">
-                                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                            <input type="email" id="addmembersinput" class="form-control shadow-remove borderradius-remove"
                                                 placeholder="Add Members" aria-describedby="emailHelp">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-2">
-                                        <button type="button"
+                                        <button type="button" onclick="addmembers()"
                                             class="btn btn-primary text-white borderradius-remove shadow-remove addshadow">
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Add
                                         </button>
                                     </div>
                                 </div>
@@ -148,19 +147,19 @@
                             <br>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-2 col-2">
+                                    <div class="col-md-2 col-6">
                                         <button type="button"
                                             class="btn btn-primary text-white borderradius-remove shadow-remove addshadow">
                                             Save Changes
                                         </button>
                                     </div>
-                                    <div class="col-md-6 col-2">
+                                    <div class="col-md-6 col-6">
                                         <button type="button" onclick="history.back();"
                                             class="btn btn-light borderradius-remove shadow-remove addshadow">
                                             Cancel
                                         </button>
                                     </div>
-                                    <div class="col-md-4 col-2">
+                                    <div class="col-md-4 col-6">
                                         <button type="button" onclick="deleteteam()"
                                             class="btn btn-warning text-white borderradius-remove shadow-remove addshadow">
                                             Delete Team
