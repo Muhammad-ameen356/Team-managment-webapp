@@ -90,12 +90,12 @@
                                 </div>
                                 <br>
                                 <div class="col-md-4">
-                                    <div class="form-outline">
-                                        <label for="teamnameinput" class="form-label">Are there any blocker in your
-                                            way?</label>
-                                        <input type="text" class="form-control shadow-remove borderradius-remove"
-                                            placeholder="" aria-describedby="emailHelp">
-                                    </div>
+                                    <button type="button"
+                                        class="btn btn-dark text-white shadow-remove borderradius-remove"
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        Add Questions
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
                                 </div>
                             </div>
                             <br>
@@ -124,7 +124,7 @@
                             <p>Members:</p>
                             <div class="container">
                                 <div class="row" id="memberownerview">
-                                    
+
                                 </div>
                             </div>
                             <br>
@@ -132,7 +132,8 @@
                                 <div class="row mt-4">
                                     <div class="col-md-8 col-10">
                                         <div class="form-outline">
-                                            <input type="email" id="addmembersinput" class="form-control shadow-remove borderradius-remove"
+                                            <input type="email" id="addmembersinput"
+                                                class="form-control shadow-remove borderradius-remove"
                                                 placeholder="Add Members" aria-describedby="emailHelp">
                                         </div>
                                     </div>
@@ -175,6 +176,73 @@
         </fieldset>
     </div>
 
+
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content borderradius-remove">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <form id="addingmemberform" class="container">
+                        <div class="form-outline">
+                            <label for="teamnameinput" class="form-label">Team Name</label>
+                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                placeholder="Team Name" id="teamnameinput" aria-describedby="emailHelp">
+                        </div>
+                        <input type="hidden" id="hiddeninput">
+                        <br>
+                        <div class="form-outline">
+                            <label for="teamcatogeryinput" class="form-label">Category</label>
+                            <select id="teamcatogeryinput" class="form-select shadow-remove borderradius-remove"
+                                aria-label="Default select example">
+                                <option value="Not selected" selected>Category</option>
+                                <option value="Maintainence">Maintainence</option>
+                                <option value="Development">Development</option>
+                                <option value="Project Manager">Project Manager</option>
+                            </select>
+
+                            <!-- <input type="email" class="form-control shadow-remove" placeholder="Category"
+                         aria-describedby="emailHelp"> -->
+                        </div>
+                        <br>
+                        <div class="form-outline">
+                            <label for="memberemailinput" class="form-label">Member (type email)</label>
+                            <input type="email" class="form-control shadow-remove borderradius-remove"
+                                id="memberemailinput" aria-describedby="emailHelp">
+                            <p class="text-muted">
+                                Seperated By comas (<b style="font-size: 22px;">,</b>)
+                            </p>
+                            <!-- <button type="button" onclick="addmember()" class="btn btn-danger rounded-0 mt-3">
+                            Add Member
+                        </button> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="createteamid" onclick="createteamdatastore(); createteam(); "
+                        class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
+                        Create
+                    </button>
+
+                    <button type="button" id="editteambutton" onclick="saveeditteam()" style="display: none;"
+                        class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
+                        Edit
+                    </button>
+
+                    <button type="button" id="cancelbutton"
+                        class="btn btn-warning text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
