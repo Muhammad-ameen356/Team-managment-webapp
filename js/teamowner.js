@@ -6,7 +6,7 @@ function settingteamGetData() {
     emailfromindex.forEach((item, ii) => {
         html += `<div class="col-md-4" >
                     <li class="mainmemberli">
-                       <span class="memberli"> ${item}  <span><i onclick="removeonemember(${ii})" class="bi bi-x-circle-fill"></i></span></span>
+                       <span class="memberli"> ${item}  <span><i ondblclick="removeonemember(${ii})" class="bi bi-x-circle-fill"></i></span></span>
                     </li> 
                 </div>`
     });
@@ -41,5 +41,4 @@ function addmembers() {
     } else {
         swal("Please Input First")
     }
-
 }

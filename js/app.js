@@ -14,20 +14,31 @@ function createteamdatastore() {
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
         if (memberemailinput.indexOf(" ") == -1) {
-            let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-            teamdata.push(person);
-            localStorage.setItem("addteam", JSON.stringify(teamdata));
-            swal("Team Created", "Add more member If you want", "success");
-            createteam();
-            document.getElementById("teamnameinput").value = "";
-            document.getElementById("teamcatogeryinput").value = "";
-            document.getElementById("memberemailinput").value = "";
+            if (memberemailinput.charAt(memberemailinput.length - 1) !== ",") {
+                if (memberemailinput.indexOf(",,") == -1) {
+                    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+                    teamdata.push(person);
+                    localStorage.setItem("addteam", JSON.stringify(teamdata));
+                    swal("Team Created", "Add more member If you want", "success");
+                    createteam();
+                    document.getElementById("teamnameinput").value = "";
+                    document.getElementById("teamcatogeryinput").value = "";
+                    document.getElementById("memberemailinput").value = "";
+                } else {
+                    swal("More Than one Comma (,) is not Allow")
+                }
+            } else {
+                swal("You Enter (,) in the last, Its Not Allow")
+            }
         } else {
             swal("Member Filed Cannot contain Any Empty Space")
         }
     } else {
         swal("Please Input first");
     }
+    // if(memberemailinput.length == 0){
+    //     console.log("adasd");
+    // }
 };
 
 // adding member 
@@ -38,26 +49,22 @@ function createteamdatastore() {
 // }
 
 // Create Team 
-// Todo: print email where I added
 function createteam() {
     let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
     let html = '';
-    let memberhtml = '';
     let createElement = document.getElementById('createElement');
     teamdata.forEach((item, index) => {
+
         if (item.email.length == 1) {
             var email = item.email[0];
-        } else {
+        } else if (item.email.length == 0) {
+            var email = "Not added yet"
+        }
+        else {
             var email = item.email[0] + ", " + item.email[1] + " & " + `<b> ${(item.email.length - 2)} </b>` + " Other"
-
         }
         let teamname = item.name
         let capitializaTeamname = (teamname.charAt(0).toUpperCase() + teamname.slice(1));
-        // email.forEach((emailitem, ii) => {
-        //     memberhtml += `<li>
-        //                       ${emailitem}  
-        //                 </li>`
-        // })
 
         html += `<fieldset class="myteam fw-normal text-start">
                     <div class="myteamcontent">
@@ -81,12 +88,6 @@ function createteam() {
     });
 
     createElement.innerHTML = html;
-    // if (memberhtml.length > 0) {
-    //     document.getElementById('memberlist').innerHTML = memberhtml;
-    // } else {
-    //     console.log("Empty");
-    // }
-    console.log(memberhtml.length);
 }
 
 // editteam
@@ -124,15 +125,24 @@ function saveeditteam() {
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
         if (memberemailinput.indexOf(" ") == -1) {
-            let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-            teamdata[hiddeninput] = person;
-            localStorage.setItem("addteam", JSON.stringify(teamdata));
+            if (memberemailinput.charAt(memberemailinput.length - 1) !== ",") {
+                if (memberemailinput.indexOf(",,") == -1) {
+                    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+                    teamdata[hiddeninput] = person;
+                    localStorage.setItem("addteam", JSON.stringify(teamdata));
+                } else {
+                    swal("More Than one Comma (,) is not Allow")
+                }
+            } else {
+                swal("You Enter (,) in the last, Its Not Allow")
+            }
         } else {
             swal("Member Filed Cannot contain Any Empty Space")
         }
     } else {
         swal("Empty Field Not Allowed")
     }
+    console.log();
 
     createteam();
 }
@@ -144,14 +154,6 @@ function deleteall() {
     let createElement = document.getElementById('createElement');
     createElement.innerHTML = "";
 }
-
-
-// let cancelbutton = document.getElementById('cancelbutton');
-// cancelbutton.addEventListener("click", function () {
-//     document.getElementById('teamnameinput').value = "";
-//     document.getElementById('teamcatogeryinput').value = "";
-//     document.getElementById('memberemailinput').value = "";
-// })
 
 function showinputmodalbox() {
     let createteamid = document.getElementById('createteamid');

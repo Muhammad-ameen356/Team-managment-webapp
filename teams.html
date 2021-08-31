@@ -12,6 +12,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <title>Team Managment</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
 </head>
 
 <body onload="createteam();">
@@ -42,9 +43,10 @@
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" onclick="deleteall()"
-                    class="btn btn-dark text-white shadow-remove borderradius-remove">
+                    class="btn btn-dark text-white shadow-remove borderradius-remove" title="DoubleTap to delete">
                     <i class="bi bi-trash"></i>
                 </button>
+                
             </div>
         </fieldset>
     </div>
@@ -91,7 +93,7 @@
                             <input type="email" class="form-control shadow-remove borderradius-remove"
                                 id="memberemailinput" aria-describedby="emailHelp">
                             <p class="text-muted">
-                                Seperated By comas
+                                Seperated By comas (<b style="font-size: 22px;">,</b>)
                             </p>
                             <!-- <button type="button" onclick="addmember()" class="btn btn-danger rounded-0 mt-3">
                                 Add Member
