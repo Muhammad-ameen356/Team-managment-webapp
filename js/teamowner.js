@@ -5,16 +5,26 @@ function showquestion(){
     
     let questionfromindex = teamdata[index].question;
     questionfromindex.forEach((qitem, qi) =>{
-        questionhtml += `<div class="col-md-4">
+        questionhtml += `<div class="col-md-12 col-10">
                             <div class="d-flex justify-content-between">
-                            <p>Q:${qi + 1} ${qitem}</p>
-                                <span><i class="bi bi-trash"></i></span>
+                                <p>Q:${qi + 1} ${qitem}</p>
+                                <div class="col-md-2 col-2"> 
+                                    <button onclick="removeonequestion(${qi})"><span><i class="bi bi-trash"></i></span>
+                                </div>
                             </div>
                         </div>`
 
     })
     // let questionhtml = ''
     document.getElementById('questionownerview').innerHTML = questionhtml;
+}
+
+function removeonequestion(qi){
+    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+    let index = sessionStorage.getItem("index")
+    teamdata[index].question.splice(qi, 1)
+    localStorage.setItem("addteam", JSON.stringify(teamdata));
+    showquestion();
 }
 
 function addquestion() {

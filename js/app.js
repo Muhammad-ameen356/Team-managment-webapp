@@ -102,8 +102,8 @@ function editteam(index) {
     document.getElementById('teamcatogeryinput').value = teamdata[index].category;
     document.getElementById('memberemailinput').value = teamdata[index].email;
     // console.log(teamdata[index].email);
-    createteamid.style.display = "none"
-    editteambutton.style.display = "block"
+    createteamid.style.display = "none";
+    editteambutton.style.display = "block";
 
     let hiddeninput = document.getElementById('hiddeninput');
     // console.log(index);
@@ -112,14 +112,15 @@ function editteam(index) {
 }
 
 function saveeditteam() {
-    let hiddeninput = document.getElementById('hiddeninput').value;
+    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
 
+    let hiddeninput = document.getElementById('hiddeninput').value;
     let teamnameinput = document.getElementById('teamnameinput').value;
     let teamcatogeryinput = document.getElementById('teamcatogeryinput').value;
     let memberemailinput = document.getElementById('memberemailinput').value;
-    let commaseprate = memberemailinput.split(',')
-    // console.log(commaseprate);
-    var arr = []
+    let commaseprate = memberemailinput.split(',');
+    
+    var arr = teamdata[hiddeninput].question;
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
@@ -146,8 +147,6 @@ function saveeditteam() {
     } else {
         swal("Empty Field Not Allowed")
     }
-    console.log();
-
     createteam();
 }
 
