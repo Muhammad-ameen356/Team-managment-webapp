@@ -7,9 +7,11 @@ function showquestion(){
     questionfromindex.forEach((qitem, qi) =>{
         questionhtml += `<div class="col-md-12 col-10">
                             <div class="d-flex justify-content-between">
-                                <p>Q:${qi + 1} ${qitem}</p>
+                                <p><b>Q:${qi + 1}</b> ${qitem}</p>
                                 <div class="col-md-2 col-2"> 
-                                    <button onclick="removeonequestion(${qi})"><span><i class="bi bi-trash"></i></span>
+                                    <button class="btn btn-dark btn-sm outline-remove borderradius-remove" 
+                                    onclick="removeonequestion(${qi})">
+                                    <i class="bi bi-dash-lg"></i>
                                 </div>
                             </div>
                         </div>`
