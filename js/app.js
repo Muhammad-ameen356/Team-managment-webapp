@@ -6,10 +6,12 @@ function createteamdatastore() {
     let memberemailinput = document.getElementById('memberemailinput').value;
     let commaseprate = memberemailinput.split(',')
     // console.log(commaseprate);
+    var arr = []
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
         email: commaseprate,
+        question: arr,
     };
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
@@ -117,10 +119,12 @@ function saveeditteam() {
     let memberemailinput = document.getElementById('memberemailinput').value;
     let commaseprate = memberemailinput.split(',')
     // console.log(commaseprate);
+    var arr = []
     let person = {
         name: teamnameinput,
         category: teamcatogeryinput,
         email: commaseprate,
+        question: arr,
     };
 
     if ((teamnameinput.length && memberemailinput.length) > 0) {
