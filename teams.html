@@ -12,7 +12,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <title>Team Managment</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    
+
 </head>
 
 <body onload="createteam();">
@@ -20,21 +20,23 @@
     <div class="container">
         <fieldset class="main-border">
             <legend class="main-border">Teams</legend>
+            <section class="logout text-end">
+                <button onclick="logout()" class="btn btn-danger bi-text-right">LogOut</button>
+            </section>
+
             <section class="text-center">
                 <h4>Teams you own</h4>
-                <h1 id="ifempty"></h1>
             </section>
             <div class="second-container container" id="createElement">
-                <!-- <fieldset class="scheduler-border1 fw-normal text-start">
-                    <legend class="scheduler-border1" id="teamname">asdasd</legend>
-                    
-                </fieldset> -->
             </div>
+
+            <section class="text-center">
+                <h4>Teams you're part of</h4>
+            </section>
+            <div class="second-container container" id="partteamElement">
+            </div>
+
             <div class="d-flex justify-content-end">
-                <!-- <button type="button" id="addteambutton" class="btn btn-dark text-white shadow-remove"
-                    onclick="createteam()">
-                    Add
-                </button> -->
                 <button type="button" onclick="showinputmodalbox()"
                     class="btn btn-dark text-white shadow-remove borderradius-remove" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">
@@ -42,11 +44,11 @@
                     <i class="bi bi-plus-lg"></i>
                 </button>
                 &nbsp;&nbsp;&nbsp;
-                <button type="button" onclick="deleteall()"
+                <button type="button" ondblclick="deleteall()"
                     class="btn btn-dark text-white shadow-remove borderradius-remove" title="DoubleTap to delete">
                     <i class="bi bi-trash"></i>
                 </button>
-                
+
             </div>
         </fieldset>
     </div>
@@ -122,9 +124,9 @@
     </div>
 
 
-
     <script src="./js/app.js"></script>
     <script src="./js/loginandsignup.js"></script>
+    <script src="./js/teamowner.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Bootstrap v.5.0 -->

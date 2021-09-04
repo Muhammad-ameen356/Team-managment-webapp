@@ -34,13 +34,20 @@ function signup() {
 
     let alreadyusername = document.getElementById('alreadyusername');
     let spaceusername = document.getElementById('spaceusername');
-
+    
+    var d = new Date();
+    var n = d.getTime()
     // Push Data Usin Object
+    var createdteamarr = [];
+    var partteamarr = [];
     var person = {
         username: signupusername,
         name: signupfullname,
         email: signupemailid,
         password: signuppassword,
+        createdteam: createdteamarr,
+        partteam: partteamarr,
+        userkey: n,
     };
     if (signupusername.indexOf(" ") > -1) {
         spaceusername.style.display = "block";
@@ -54,7 +61,7 @@ function signup() {
                 var signupdata = JSON.parse(localStorage.getItem("persons")) || [];
                 signupdata.push(person);
                 localStorage.setItem("persons", JSON.stringify(signupdata));
-                // window.location = "./login.html";
+                window.location = "./login.html";
 
             } else {
                 swal("Please Fill all the Field correctly");
@@ -103,20 +110,37 @@ function login() {
     let loginnameoremail = document.getElementById('loginnameoremail').value;
     let loginpassword = document.getElementById('loginpassword').value;
 
-    const dataforlogin = JSON.parse(localStorage.getItem("persons"))
-    // console.log(dataforlogin[0].password);
+    const dataforlogin = JSON.parse(localStorage.getItem("persons") || [])
+
     let found = false;
-    // Loop for searching data in Array
-    for (let i = 0; i <= dataforlogin.length - 1; i++) {
-        if ((dataforlogin[i].email == loginnameoremail || dataforlogin[i].username == loginnameoremail) && dataforlogin[i].password == loginpassword) {
+    dataforlogin.forEach((element, ind) => {
+
+        if ((loginnameoremail == element.username || loginnameoremail == element.email)  && loginpassword == element.password) {
             found = true;
-            console.log("Login email and password matched");
-            window.location.href = "./teams.html"
+            console.log("match", ind);
+            localStorage.setItem("userindex", ind);
+            window.location.href = "./teams.html";
+
         }
-    }
+
+    });
     if (found == false) {
         swal("Incorrect Email or Password");
     }
+    // Loop for searching data in Array
+    // for (let i = 0; i <= dataforlogin.length - 1; i++) {
+        // console.log(dataforlogin[i]);
+        // if ((dataforlogin[i].email == loginnameoremail || dataforlogin[i].username == loginnameoremail) && dataforlogin[i].password == loginpassword) {
+        //     found = true;
+        //     console.log("Login email and password matched");
+        //     console.log(dataforlogin[i].name);
+        //     // if((loginnameoremail && loginpassword) == dataforlogin[i].email)
+        //     // window.location.href = "./teams.html"
+        // }
+    // }
+    // if (found == false) {
+    //     swal("Incorrect Email or Password");
+    // }
     // var aaa = JSON.parse(localStorage.getItem("persons"))
     // console.log(aaa[0].email)  
 }

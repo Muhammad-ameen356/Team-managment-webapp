@@ -1,13 +1,14 @@
 function showquestion(){
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    let index = sessionStorage.getItem("index");
+    let userindex = localStorage.getItem("userindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
     let questionhtml = '';
     
-    let questionfromindex = teamdata[index].question;
+    let questionfromindex = teamdata[userindex].createdteam[settingteamindex].question;
     questionfromindex.forEach((qitem, qi) =>{
         questionhtml += `<div class="col-md-12 col-10">
                             <div class="d-flex justify-content-between">
-                                <p><b>Q:${qi + 1}</b> ${qitem}</p>
+                                <p><b>Q:${qi + 1}</b> ${qitem.ques}</p>
                                 <div class="col-md-2 col-2"> 
                                     <button class="btn btn-dark btn-sm outline-remove borderradius-remove" 
                                     onclick="removeonequestion(${qi})">
@@ -22,21 +23,28 @@ function showquestion(){
 }
 
 function removeonequestion(qi){
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    let index = sessionStorage.getItem("index")
-    teamdata[index].question.splice(qi, 1)
-    localStorage.setItem("addteam", JSON.stringify(teamdata));
+    let userindex = localStorage.getItem("userindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    
+    teamdata[userindex].createdteam[settingteamindex].question.splice(qi, 1);
+    localStorage.setItem("persons", JSON.stringify(teamdata));
     showquestion();
 }
 
 function addquestion() {
+    let userindex = localStorage.getItem("userindex");
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
     var addquestioninput = document.getElementById('addquestioninput').value;
-    let index = sessionStorage.getItem("index")
 
+    let questionobj = {
+        ques: addquestioninput,
+        ans: "",
+    }
     if (addquestioninput.length !== 0) {
-        let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-        teamdata[index].question.push(addquestioninput);
-        localStorage.setItem("addteam", JSON.stringify(teamdata));
+        let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+        teamdata[userindex].createdteam[settingteamindex].question.push(questionobj);
+        localStorage.setItem("persons", JSON.stringify(teamdata));
         document.getElementById('addquestioninput').value = "";
     } else{
         alert("Type Question")
@@ -45,11 +53,13 @@ function addquestion() {
 }
 
 function settingteamGetData() {
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    let index = sessionStorage.getItem("index");
-    let emailfromindex = teamdata[index].email;
+    let userindex = localStorage.getItem("userindex");
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+
+    let memberfromindex = teamdata[userindex].createdteam[settingteamindex].members;
     let emailhtml = '';
-    emailfromindex.forEach((eitem, ei) => {
+    memberfromindex.forEach((eitem, ei) => {
         emailhtml += `<div class="col-md-4">
                         <li class="mainmemberli">
                         <span class="memberli"> ${eitem}  <span><i ondblclick="removeonemember(${ei})" class="bi bi-x-circle-fill"></i></span></span>
@@ -61,20 +71,25 @@ function settingteamGetData() {
 
 
 function removeonemember(ei) {
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    let index = sessionStorage.getItem("index")
-    teamdata[index].email.splice(ei, 1)
-    localStorage.setItem("addteam", JSON.stringify(teamdata));
+    let userindex = localStorage.getItem("userindex");
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+
+    teamdata[userindex].createdteam[settingteamindex].members.splice(ei, 1)
+    localStorage.setItem("persons", JSON.stringify(teamdata));
     settingteamGetData();
 }
 
 function addmembers() {
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
+    let userindex = localStorage.getItem("userindex");
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+
     let addmembersinput = document.getElementById('addmembersinput').value;
-    let index = sessionStorage.getItem("index");
+
     if (addmembersinput.length > 0) {
-        teamdata[index].email.push(addmembersinput);
-        localStorage.setItem("addteam", JSON.stringify(teamdata));
+        teamdata[userindex].createdteam[settingteamindex].members.push(addmembersinput);
+        localStorage.setItem("persons", JSON.stringify(teamdata));
         document.getElementById('addmembersinput').value = ""
         settingteamGetData();
     } else {
@@ -83,9 +98,11 @@ function addmembers() {
 }
 
 function deleteteam() {
-    let teamdata = JSON.parse(localStorage.getItem("addteam")) || [];
-    let index = sessionStorage.getItem("index")
-    teamdata.splice(index, 1);
-    localStorage.setItem("addteam", JSON.stringify(teamdata));
+    let userindex = localStorage.getItem("userindex");
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+
+    teamdata[userindex].createdteam.splice(settingteamindex, 1);
+    localStorage.setItem("persons", JSON.stringify(teamdata));
     window.location.href = "./teams.html"
 }
