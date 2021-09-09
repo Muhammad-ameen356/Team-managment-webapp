@@ -15,27 +15,37 @@
 
 </head>
 
-<body onload="createteam();">
+<body onload="createteam(); partteamshow();">
 
     <div class="container">
         <fieldset class="main-border">
             <legend class="main-border">Teams</legend>
-            <section class="logout text-end">
-                <button onclick="logout()" class="btn btn-danger bi-text-right">LogOut</button>
+            <section class="logout d-flex justify-content-between">
+                <div class="dropdown">
+                    <button class="border-remove" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <p class="img-circle" id="profilefirstword"></p>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <b style="font-size: 20px;">Sign in as: </b>
+                        <p class="info" id="profilename"></p>
+                        <p class="info" id="profileemail"></p>
+                        <p class="info text-muted" id="username"></p>
+
+                        <hr>
+                        <button class="dropdown-item logout-btn" type="button" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+                <!-- <button onclick="logout()" class="btn btn-danger bi-text-right">LogOut</button> -->
             </section>
 
-            <section class="text-center">
+
+
+            <section class="text-center my-2">
                 <h4>Teams you own</h4>
             </section>
             <div class="second-container container" id="createElement">
             </div>
-
-            <section class="text-center">
-                <h4>Teams you're part of</h4>
-            </section>
-            <div class="second-container container" id="partteamElement">
-            </div>
-
             <div class="d-flex justify-content-end">
                 <button type="button" onclick="showinputmodalbox()"
                     class="btn btn-dark text-white shadow-remove borderradius-remove" data-bs-toggle="modal"
@@ -50,6 +60,14 @@
                 </button>
 
             </div>
+            <hr>
+            <section class="text-center">
+                <h4>Teams you're part of</h4>
+            </section>
+            <div class="second-container container" id="partteamElement">
+            </div>
+
+
         </fieldset>
     </div>
 
@@ -104,7 +122,7 @@
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" id="createteamid" onclick="createteamdatastore(); createteam(); "
+                    <button type="button" id="createteamid" onclick="createteamdatastore(); createteam();"
                         class="btn btn-info text-white borderradius-remove shadow-remove" data-bs-dismiss="modal">
                         Create
                     </button>

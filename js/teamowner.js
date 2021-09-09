@@ -1,4 +1,4 @@
-function showquestion(){
+function showquestionOV(){
     let userindex = localStorage.getItem("userindex");
     let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
     let settingteamindex = sessionStorage.getItem("settingteamindex");
@@ -29,27 +29,29 @@ function removeonequestion(qi){
     
     teamdata[userindex].createdteam[settingteamindex].question.splice(qi, 1);
     localStorage.setItem("persons", JSON.stringify(teamdata));
-    showquestion();
+    showquestionOV();
 }
 
 function addquestion() {
     let userindex = localStorage.getItem("userindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
     let settingteamindex = sessionStorage.getItem("settingteamindex");
     var addquestioninput = document.getElementById('addquestioninput').value;
+
+    
 
     let questionobj = {
         ques: addquestioninput,
         ans: "",
     }
     if (addquestioninput.length !== 0) {
-        let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
         teamdata[userindex].createdteam[settingteamindex].question.push(questionobj);
         localStorage.setItem("persons", JSON.stringify(teamdata));
         document.getElementById('addquestioninput').value = "";
     } else{
         alert("Type Question")
     }
-    showquestion()
+    showquestionOV()
 }
 
 function settingteamGetData() {
