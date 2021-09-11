@@ -16,7 +16,6 @@ function showquestionOV(){
                                 </div>
                             </div>
                         </div>`
-
     })
     // let questionhtml = ''
     document.getElementById('questionownerview').innerHTML = questionhtml;
@@ -107,4 +106,30 @@ function deleteteam() {
     teamdata[userindex].createdteam.splice(settingteamindex, 1);
     localStorage.setItem("persons", JSON.stringify(teamdata));
     window.location.href = "./teams.html"
+}
+
+function reports(){
+    let userindex = localStorage.getItem("userindex");
+    let teamdata = JSON.parse(localStorage.getItem("persons")) || [];
+    let settingteamindex = sessionStorage.getItem("settingteamindex");
+    let questionansid = document.getElementById('questionansid');
+    let submitername = document.getElementById("submitername");
+    let submitHtml = "";
+    let quesAnsHtml = "";
+
+    let reportsfromind = teamdata[userindex].createdteam[settingteamindex].reports;
+
+    reportsfromind.forEach((repele, repind)=>{
+        console.log(repele.name);
+        quesAnsHtml += `<div class="col-md-12">   
+                            <b>${repele.name}: 12th Sep</b>
+                        </div>`
+        repele.fill.forEach((quesele, quesind)=>{
+            // console.log(quesele);
+            quesAnsHtml += `<div class="col-md-10 mx-5 my-1">Q. ${quesele.ques}</div>
+            <div class="col-md-10 mx-5 my-1">A. ${quesele.ans}</div>
+            `
+        })
+    })    
+    questionansid.innerHTML = quesAnsHtml;
 }
