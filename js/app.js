@@ -14,6 +14,7 @@ function createteamdatastore() {
     var d = new Date();
     var n = d.getTime()
     var questionarr = [];
+    var reportarr = []
     let person = {
         adminEmail: adminEmail,
         adminName: adminName,
@@ -21,6 +22,7 @@ function createteamdatastore() {
         category: teamcatogeryinput,
         members: commaseprate,
         question: questionarr,
+        reports: reportarr,
         teamkey: n,
     };
 
@@ -92,8 +94,8 @@ function createteam() {
                 item.members.forEach((mmitem, mmind) => {
                     if (mmitem == personitem.email) {
 
-                        forpartteam(index, personindex);
-                        console.log("pass=>", "team ka index:", index, "Email js usr ka mla:", personindex);
+                        partTeamDataStore(index, personindex);
+                        console.log("pass=>", "team ka index[index]:", index, "Email js usr ka mla[personindex]:", personindex);
                     }
                 })
             })
@@ -171,6 +173,7 @@ function saveeditteam() {
     let commaseprate = memberemailinput.split(',');
 
     var arr = teamdata[userindex].createdteam[hiddeninput].question;
+    var ereportarr = teamdata[userindex].createdteam[hiddeninput].reports;
     let person = {
         adminEmail: existingadminEmail,
         adminName: existingadminName,
@@ -178,6 +181,7 @@ function saveeditteam() {
         category: teamcatogeryinput,
         members: commaseprate,
         question: arr,
+        reports: ereportarr,
         teamkey: existingteamkey,
     };
 
@@ -247,22 +251,18 @@ function logout() {
 }
 
 
-function forpartteam(index, personindex) {
+function partTeamDataStore(index, personindex) {
     let teamdata = JSON.parse(localStorage.getItem("persons"));
     let userindex = JSON.parse(localStorage.getItem("userindex"));
 
-    // console.log(teamdata[userindex].createdteam[index])
-
     let teamkey = teamdata[userindex].createdteam[index].teamkey;
-    // console.log(teamkey);
     let flag = false;
 
     teamdata[personindex].partteam.forEach((partitem, partind) => {
-        // console.log(teamdata[personindex].partteam[i].teamkey);
-        // console.log(partind);
+    
         if (partitem.teamkey === teamkey) {
             flag = true;
-            console.log(partind);
+            console.log("prtTeam m js indexpar keymatch hua", partind);
             console.log("alrEADY");
 
             let partteamkey = teamdata[userindex].createdteam[index].teamkey;
@@ -284,7 +284,7 @@ function forpartteam(index, personindex) {
 
             teamdata[personindex].partteam.splice(partind, 1, person);
             localStorage.setItem("persons", JSON.stringify(teamdata));
-            console.log(teamdata[personindex].partteam);
+            // console.log(teamdata[personindex].partteam);
         }
     })
     if (flag == false) {
@@ -310,28 +310,6 @@ function forpartteam(index, personindex) {
         teamdata[personindex].partteam.push(person)
         localStorage.setItem("persons", JSON.stringify(teamdata));
     }
-
-
-    // let partteamkey = teamdata[userindex].createdteam[index].teamkey;
-    // let partteamname = teamdata[userindex].createdteam[index].teamname;
-    // let partteamategory = teamdata[userindex].createdteam[index].category;
-    // let partteammember = teamdata[userindex].createdteam[index].members;
-    // let partteamadminEmail = teamdata[userindex].createdteam[index].adminEmail;
-    // let partteamadminName = teamdata[userindex].createdteam[index].adminName;
-    // let partteamquestion = teamdata[userindex].createdteam[index].question;
-    // let person = {
-    //     adminEmail: partteamadminEmail,
-    //     adminName: partteamadminName,
-    //     teamname: partteamname,
-    //     category: partteamategory,
-    //     members: partteammember,
-    //     question: partteamquestion,
-    //     teamkey: partteamkey,
-    // };
-
-    // teamdata[personindex].partteam.push(person)
-    // localStorage.setItem("persons", JSON.stringify(teamdata));
-
 }
 
 
@@ -366,7 +344,6 @@ function partteamshow() {
                             ${members}
                             </ul>
                         </div>
-
                         <hr>
                         <div class="container">
                             <div class="row">

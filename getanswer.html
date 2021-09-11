@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="printquestion();">
+<body onload="printquestion(); anspageLoad();">
 
     <div class="container">
         <fieldset class="main-border">
@@ -41,24 +41,14 @@
                 <div>
                     <h4>FIlling For: <b><u>16-August-2021</u></b></h4>
                 </div>
-                <div id="showquestionid">
-                    <!-- <div class="col-md-8 my-5">
-                        <div class="form-outline">
-                            <label for="teamnameinput" class="form-label"><b>Q: What did you do today</b></label>
-                            <input type="email" class="form-control shadow-remove borderradius-remove"
-                                placeholder="Answer" aria-describedby="emailHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-8 my-5">
-                        <div class="form-outline">
-                            <label for="teamnameinput" class="form-label"><b>Q: What did you do today</b></label>
-                            <input type="email" class="form-control shadow-remove borderradius-remove"
-                                placeholder="Answer" aria-describedby="emailHelp">
-                        </div>
-                    </div> -->
-                </div>
+                <form id="showquestionid">
+
+                </form>
+                <!-- <div id="showquestionid">
+                   
+                </div> -->
                 <div class="">
-                    <button class="btn btn-success borderradius-remove" onclick="">Submit</button>
+                    <button id="anssubmitbtn" class="btn btn-success borderradius-remove" onclick="submitansbtn()">Submit</button>
                     <button class="btn btn-warning text-white borderradius-remove" onclick="history.back()">Cancel</button>
                 </div>
             </div>
@@ -72,7 +62,7 @@
     <script src="./js/getanswer.js"></script>
     <script src="./js/loginandsignup.js"></script>
     <script src="./js/teamowner.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/sweetalert.min.js"></script>
 
     <!-- Bootstrap v.5.0 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

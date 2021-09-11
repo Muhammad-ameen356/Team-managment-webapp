@@ -49,7 +49,7 @@ function addquestion() {
         localStorage.setItem("persons", JSON.stringify(teamdata));
         document.getElementById('addquestioninput').value = "";
     } else{
-        alert("Type Question")
+        swal("","Please Insert Your Question","warning");
     }
     showquestionOV()
 }
